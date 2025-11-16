@@ -6,6 +6,7 @@ export default function useNotes() {
     const [inputList, setInputList] = useState([]);
     const [deletedItems, setDeletedItems] = useState([]);
     const [completedItems, setCompletedItems] = useState([]);
+    const [currentFilter, setCurrentFilter] = useState('active');
 
     const handleSubmit = () => {
         if (!input.trim())
@@ -33,6 +34,29 @@ export default function useNotes() {
         setInputList(items => items.filter(item => item.id != index));
     }
 
-    return { input, setInput, inputList, handleSubmit, removeItems, deletedItemsList, deletedItems, completedItems };
+    const getFilteredItem = () => {
+        switch (currentFilter) {
+            case 'active':
+                return inputList;
+            case 'deleted':
+                return deletedItems;
+            case 'completed':
+                return completedItems;
+        }
+    }
+
+    return {
+        input,
+        setInput,
+        inputList,
+        handleSubmit,
+        removeItems,
+        deletedItemsList,
+        deletedItems,
+        completedItems,
+        currentFilter,
+        setCurrentFilter,
+        getFilteredItem
+    };
 
 }

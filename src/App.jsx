@@ -13,8 +13,9 @@ function App() {
     handleSubmit, 
     removeItems, 
     deletedItemsList, 
-    deletedItems, 
-    completedItems 
+    currentFilter, 
+    setCurrentFilter,
+    getFilteredItem
   } = useNotes();
 
   return (
@@ -29,12 +30,16 @@ function App() {
         handleSubmit={handleSubmit}
       />
 
-      <FilterPanel />
+      <FilterPanel
+        currentFilter={currentFilter}
+        setCurrentFilter={setCurrentFilter}
+      />
 
       <TaskList 
-        inputList={inputList}
+        inputList={getFilteredItem()}
         removeItems={removeItems}
         deletedItemsList={deletedItemsList}
+        currentFilter={currentFilter}
       />
     </div>
   )

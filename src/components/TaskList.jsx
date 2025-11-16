@@ -1,4 +1,4 @@
-const TaskList = ({ inputList, removeItems, deletedItemsList }) => {
+const TaskList = ({ inputList, removeItems, deletedItemsList, currentFilter }) => {
   const handleCheckboxChange = (e, itemId) => {
     const row = e.target.closest('li');
     row.classList.add(
@@ -9,6 +9,13 @@ const TaskList = ({ inputList, removeItems, deletedItemsList }) => {
       "duration-500"
     );
     setTimeout(() => removeItems(itemId), 500);
+  };
+
+  const originalClass = 'break-words text-left'
+
+  const allClasses = () => {
+    const addClass = currentFilter === 'completed' ? 'line-through text-gray-400 opacity-40 transition-all duration-500' : '';
+    return `${addClass} ${originalClass}`;
   };
 
   return (
@@ -23,7 +30,7 @@ const TaskList = ({ inputList, removeItems, deletedItemsList }) => {
                 className='align-middle w-4 h-4'
                 onChange={(e) => handleCheckboxChange(e, item.id)}
               />
-              <label className='break-words text-left'>{item.text}</label>
+              <label className={allClasses()}>{item.text}</label>
             </div>
 
             {/* Right: delete button */}
