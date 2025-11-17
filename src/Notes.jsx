@@ -5,7 +5,6 @@ export default function useNotes() {
     const [input, setInput] = useState("");
     const [inputList, setInputList] = useState([]);
     const [deletedItems, setDeletedItems] = useState([]);
-    const [completedItems, setCompletedItems] = useState([]);
     const [currentFilter, setCurrentFilter] = useState('active');
 
     const handleSubmit = () => {
@@ -14,17 +13,15 @@ export default function useNotes() {
         setInputList(items => [...items,
             {
                 id: crypto.randomUUID(),
-                text: input
+                text: input,
+                completed: false
             }]);    
 
         setInput("");
     }
 
-    const removeItems = (index) => {
-        const item = inputList.find(item => item.id === index);
-        if (!item) return;
-        setCompletedItems(items => [...items, item]);
-        setInputList(items => items.filter(item => item.id !== index));
+    const toggleCompletedItems = (index) => {
+        setInputList(items => items.map(item => item.id === index ? { ...item, completed: !item.completed } : item));
     }
 
     const deletedItemsList = (index) => {
@@ -37,11 +34,13 @@ export default function useNotes() {
     const getFilteredItem = () => {
         switch (currentFilter) {
             case 'active':
-                return inputList;
+                return inputList.filter(items => !items.completed);
             case 'deleted':
                 return deletedItems;
             case 'completed':
-                return completedItems;
+                return inputList.filter(items => items.completed);
+            default:
+                return inputList;
         }
     }
 
@@ -50,10 +49,9 @@ export default function useNotes() {
         setInput,
         inputList,
         handleSubmit,
-        removeItems,
+        toggleCompletedItems,
         deletedItemsList,
         deletedItems,
-        completedItems,
         currentFilter,
         setCurrentFilter,
         getFilteredItem

@@ -11,7 +11,7 @@ function App() {
     setInput, 
     inputList, 
     handleSubmit, 
-    removeItems, 
+    toggleCompletedItems, 
     deletedItemsList, 
     currentFilter, 
     setCurrentFilter,
@@ -37,7 +37,7 @@ function App() {
 
       <TaskList 
         inputList={getFilteredItem()}
-        removeItems={removeItems}
+        toggleCompletedItems={toggleCompletedItems}
         deletedItemsList={deletedItemsList}
         currentFilter={currentFilter}
       />
