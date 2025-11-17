@@ -12,16 +12,10 @@ const FilterPanel = ({ currentFilter, setCurrentFilter }) => {
       w-50
     `.trim().replace(/\s+/g, ' ');
 
-    const activeClasses = currentFilter === filterType ? 'bg-pink-900' : 'bg-pink-700 hover:bg-pink-900';
+    const activeClasses = currentFilter === filterType ? 'bg-pink-200' : 'bg-pink-700 hover:bg-pink-900';
 
     return `${baseClasses} ${activeClasses}`; 
   };
-    const clearButtonClasses = `
-      hover:underline 
-      hover:cursor-pointer 
-      align-left 
-      text-xs
-    `.trim().replace(/\s+/g, ' ');
 
     return (
       <div className='row-span-4 bg-white'>

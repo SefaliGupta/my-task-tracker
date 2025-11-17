@@ -19,7 +19,7 @@ function App() {
   } = useNotes();
 
   return (
-    <div className='bg-blue-200 p-8 grid grid-cols-[20%_55.5%_20%] grid-rows-4 gap-6'>
+    <div className='bg-pink-50 p-8 grid grid-cols-[20%_55.5%_20%] grid-rows-4 gap-6'>
       <div className='row-span-4 bg-white'>
         {/* for supporting user language */}
       </div>
