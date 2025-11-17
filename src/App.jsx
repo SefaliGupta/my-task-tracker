@@ -9,13 +9,13 @@ function App() {
   const { 
     input, 
     setInput, 
-    inputList, 
     handleSubmit, 
     toggleCompletedItems, 
     deletedItemsList, 
     currentFilter, 
     setCurrentFilter,
-    getFilteredItem
+    getFilteredItem,
+    restoreItems
   } = useNotes();
 
   return (
@@ -40,6 +40,7 @@ function App() {
         toggleCompletedItems={toggleCompletedItems}
         deletedItemsList={deletedItemsList}
         currentFilter={currentFilter}
+        restoreItems={restoreItems}
       />
     </div>
   )

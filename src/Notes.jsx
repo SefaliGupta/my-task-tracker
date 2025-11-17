@@ -31,6 +31,13 @@ export default function useNotes() {
         setInputList(items => items.filter(item => item.id != index));
     }
 
+    const restoreItems = (index) => {
+        const item = deletedItems.find(item => item.id === index);
+        if (!item) return;
+        setInputList(items => [...items, { ...item, completed: false }])
+        setDeletedItems(items => items.filter(item => item.id != index));
+    }
+
     const getFilteredItem = () => {
         switch (currentFilter) {
             case 'active':
@@ -54,7 +61,8 @@ export default function useNotes() {
         deletedItems,
         currentFilter,
         setCurrentFilter,
-        getFilteredItem
+        getFilteredItem,
+        restoreItems
     };
 
 }

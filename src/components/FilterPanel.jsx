@@ -41,10 +41,6 @@ const FilterPanel = ({ currentFilter, setCurrentFilter }) => {
         onClick={() => setCurrentFilter('deleted')}>
           Deleted
         </button>
-        
-        <button className={clearButtonClasses}>
-          Clear All
-        </button>
       </div>
     );
 };
