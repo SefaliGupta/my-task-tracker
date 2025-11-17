@@ -14,6 +14,7 @@ const TaskInput = ({ input, setInput, handleSubmit }) => {
     bg-white
     row-span-1
     min-w-150
+    font-mono
   `.trim().replace(/\s+/g, ' ');
 
   const buttonClasses = `

@@ -10,6 +10,7 @@ const FilterPanel = ({ currentFilter, setCurrentFilter }) => {
       float-right
       text-white
       w-50
+      font-mono
     `.trim().replace(/\s+/g, ' ');
 
     const activeClasses = currentFilter === filterType ? 'bg-pink-200' : 'bg-pink-700 hover:bg-pink-900';
@@ -19,7 +20,7 @@ const FilterPanel = ({ currentFilter, setCurrentFilter }) => {
 
     return (
       <div className='row-span-4 bg-white'>
-        <h1 className='italic text-gray-600 py-4'>Filters</h1>
+        <h1 className='italic font-mono text-gray-600 py-4'>Filters</h1>
         
         <button className={getFilterButtonClasses('completed')}
         onClick={() => setCurrentFilter('completed')}>

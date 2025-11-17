@@ -15,7 +15,7 @@ const TaskList = ({ inputList, toggleCompletedItems, deletedItemsList, currentFi
     setTimeout(() => toggleCompletedItems(itemId), 500);
   };
 
-  const originalClass = 'wrap-anywhere text-left'
+  const originalClass = 'font-mono wrap-anywhere text-left'
 
   const allClasses = () => {
     const addClass = currentFilter === 'completed' ? 'line-through text-gray-400 opacity-40 transition-all duration-500' : '';
